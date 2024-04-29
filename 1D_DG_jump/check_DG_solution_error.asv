@@ -2,17 +2,21 @@
 left = 0;
 right = 2*pi;
 T_last = 2*pi;
-h_N = 20;
-CFL = 0.3;
+h_N = 160;
+CFL = 0.1;
+M = 1;
 space_order = 3;
 partion_type = 101;
 
+global kp;
+kp = 1;
+
 %% 求误差阶数
 [Gauss_reference_coefficient,Gauss_reference_point]=generate_Gauss_reference(4);
-for i = 1:4
+for i = 1:1
    
     N = h_N*2^(i-1);
-    [uh,T_partion] = solve_1D_hw1(left,right,T_last,N,CFL,space_order,partion_type);
+    [uh,T_partion] = solve_1D_hw1(left,right,T_last,N,CFL,M,space_order,partion_type);
     L1_error = solution_error_Lnorm('exact_function',1,N,uh,space_order,T_partion,Gauss_reference_coefficient,Gauss_reference_point);
     L2_error = solution_error_Lnorm('exact_function',2,N,uh,space_order,T_partion,Gauss_reference_coefficient,Gauss_reference_point);
     L_infinite_error = solution_error_abs_max('exact_function',N,uh,space_order,T_partion);
@@ -45,24 +49,21 @@ for i = 1:4
     L2_error_last = L2_error;
     L_infinite_error_last = L_infinite_error;
     
-    plot_DG_1D_time_T(T_partion,uh,space_order,N,i)
+    hold on
+    plot_DG_1D_time_T(T_partion,uh,space_order,N)
+
 end
 
-% L1_order_list
-% L2_order_list
-L_infinite_order_list
-
-% plot_DG_1D_time_T(T_partion,uh,space_order,N)
 hold on
-% j=1;
-% T_temp=[];
-% for i = 1:length(T_partion)
-% 
-%     if mod(j-1,4)==0
-%     T_temp = [T_temp,T_partion(j)];
-%     end
-% 
-%     j=j+1;
-% end
-plot(T_partion,feval("exact_function",T_partion,T_last),'-o')
-legend('N=20','N=40','N=80','N=160','真实解')
+j=1;
+T_temp=[];
+for i = 1:length(T_partion)
+
+    if mod(j-1,4)==0
+    T_temp = [T_temp,T_partion(j)];
+    end
+
+    j=j+1;
+end
+plot(T_partion,feval("exact_function",T_partion,T_last),'-')
+% legend('N=20','N=40','N=80','N=160','真实解')

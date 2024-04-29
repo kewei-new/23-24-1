@@ -1,4 +1,4 @@
-function [result_T,T_partion] = solve_1D_hw1(left,right,T_last,h_N,CFL,space_order,partion_type)
+function [result_T,T_partion] = solve_1D_hw1(left,right,T_last,h_N,CFL,M,space_order,partion_type)
 % left,right 左右边界
 % T_last最大时间
 % h_N空间剖分数
@@ -27,7 +27,7 @@ A2 = assemble_matrix_1D(h_N,T_partion,space_order,0,Gauss_reference_coefficient,
 
 %% 3阶龙格库塔
 matrix_E = -A1\A2;
-result = RK3_1D('g_function',h_N,CFL,T_last,space_order,T_partion,matrix_E,Gauss_reference_coefficient,Gauss_reference_point);
+result = RK3_1D('g_function',h_N,CFL,T_last,space_order,T_partion,matrix_E,M,Gauss_reference_coefficient,Gauss_reference_point);
 result_T = result(:,end);%输出最后时刻
 
 end

@@ -34,7 +34,7 @@ elseif fun_order == 2
    
     if der_order == 0
         
-        result = (3*t^2 - 1)/2;
+        result = 3/2*(t^2 - 1/3);
 
     elseif der_order == 1
 
@@ -50,11 +50,11 @@ end
 
 if der_order == 0
 
-    result = sqrt((2*fun_order + 1)/(2*h))*result;
+    result = 1*result;
 
 elseif der_order == 1
 
-    result =  sqrt((2*fun_order + 1)/(2*h^3))*result;
+    result =  1/h*result;
 
 end
 

@@ -12,15 +12,16 @@ for i = 1:h_N
     for k = 1:space_order
         
         Q1 = 0;
-
+        Q2 = 0;
         % 求(u,Pj)
         for j = 1:length(Gauss_local_coefficient)
     
             Q1 = Q1 + Gauss_local_coefficient(j)*local_basis(mesh_point,Gauss_local_point(j),k-1,0)*feval(function_name,Gauss_local_point(j));
-    
+            Q2 = Q2 + Gauss_local_coefficient(j)*local_basis(mesh_point,Gauss_local_point(j),k-1,0)^2;
+
         end
 
-        Q=[Q;Q1];
+        Q=[Q;Q1/Q2];
 
     end
 
