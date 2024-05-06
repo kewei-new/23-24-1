@@ -5,7 +5,7 @@ T_last = 2*pi;
 h_N = 20;
 CFL = 0.1;
 M = 1;
-space_order = 3;
+space_order = 2;
 partion_type = 101;
 
 
