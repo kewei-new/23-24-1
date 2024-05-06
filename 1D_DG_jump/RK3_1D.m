@@ -49,7 +49,7 @@ while T < T_last
     % K2 = Limiter1(K2,h,M,G,space_order);
 
     Q = 1/3*Q + 2/3*K2 + 2/3*t*matrix_E*K2;
-    % Q = Limiter1(Q,h,M,G,space_order);
+    Q = Limiter1(Q,h,M,G,space_order);
 
 end
 
