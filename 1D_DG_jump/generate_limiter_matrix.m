@@ -11,9 +11,9 @@ for k=1:space_order
     
     % 均值就是在区间I上求积分并除以
     result(1,k) = 1/h*Gauss_int_1D(mesh_point,k-1,0,Gauss_coefficient_local_1D,Gauss_point_local_1D,0,0);
-    % 求右端点值
+    % 求右端点值-均值
     result(2,k) = local_basis(mesh_point,mesh_point(2),k-1,0) - result(1,k);
-    % 求左端点值
+    % 求均值-左端点值
     result(3,k) = result(1,k) - local_basis(mesh_point,mesh_point(1),k-1,0);
 
 end

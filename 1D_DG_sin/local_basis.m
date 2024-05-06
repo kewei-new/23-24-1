@@ -52,11 +52,11 @@ end
 
 if der_order == 0
 
-    result = result;
+    result = 2*result;
 
 elseif der_order == 1
 
-    result = 1/h*result;
+    result = 2/h*result;
 
 end
 

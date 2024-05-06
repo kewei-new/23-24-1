@@ -2,7 +2,7 @@
 left = 0;
 right = 2*pi;
 T_last = 2*pi;
-h_N = 40;
+h_N = 20;
 CFL = 0.1;
 M = 1;
 space_order = 3;
@@ -11,7 +11,7 @@ partion_type = 101;
 
 %% 求误差阶数
 [Gauss_reference_coefficient,Gauss_reference_point]=generate_Gauss_reference(4);
-for i = 1:1
+for i = 1:4
    
     N = h_N*2^(i-1);
     [uh,T_partion] = solve_1D_hw1(left,right,T_last,N,CFL,M,space_order,partion_type);

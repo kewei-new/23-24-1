@@ -50,12 +50,14 @@ end
 
 if der_order == 0
 
-    result = 1*result;
+    result = result;
 
 elseif der_order == 1
 
     result =  1/h*result;
 
 end
+
+
 
 
